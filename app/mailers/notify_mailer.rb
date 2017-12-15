@@ -7,7 +7,9 @@ class NotifyMailer < ApplicationMailer
 
     def admin_notify(product)
         @product = product
-        @user = product.insurance_type.user
-        mail(to: @user.email, subject: 'Reminder Admin')
+        users = User.where(role: 'Admin')
+        users.each do |user|
+            mail(to: user.email, subject: 'Reminder Admin')
+        end if users.present?
     end
 end

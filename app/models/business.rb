@@ -6,7 +6,7 @@ class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   validates_processing_of :logo
-  #validate :image_size_validation
+  validate :image_size_validation
   validates :product_IDs, presence: true
 
   after_save :notify_user
