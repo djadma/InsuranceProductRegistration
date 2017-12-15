@@ -28,6 +28,9 @@ class Product < ActiveRecord::Base
   private
 
   def notify_admin
-    NotifyMailer.admin_notify(self).deliver
+    users = User.where(role: 'Admin')
+    users.each do |user|
+      NotifyMailer.admin_notify(self, user).deliver
+    end if users.present?
   end
 end

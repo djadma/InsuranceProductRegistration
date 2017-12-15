@@ -38,7 +38,7 @@ class BusinessesController < ApplicationController
             format.html { redirect_to businesses_url}
             format.json { head :no_content }
           else
-            format.html { render action: 'edit' }
+            format.html { redirect_to edit_business_path(@business) }
             format.json { render json: @business.errors, status: :unprocessable_entity }
           end
         end
