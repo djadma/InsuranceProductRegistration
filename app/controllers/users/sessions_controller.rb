@@ -3,4 +3,9 @@ class Users::SessionsController < Devise::SessionsController
 	def new
 	  super
 	end
+
+	def destroy
+		Thread.current[:user] = nil
+		super
+	end
 end
