@@ -1,0 +1,29 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <span class="m-r-sm text-muted welcome-message" data-i18n="topnav.welcometext"><%= t('welcome_to') %> <%= current_user.try(:username).try(:capitalize) %> <%= current_user.is_admin? ? t('admin_panel') : t('broker_panel')%></span>
+            </li>
+            <li class="dropdown">
+                <div class="locales locales-public">
+                    <%= link_to_unless I18n.locale == :en, "EN", locale: :en %>| <%= link_to_unless I18n.locale == :es, "ES", locale: :es %>
+                </div>
+            </li>
+            <li>
+              <% if user_signed_in? %>
+                <li>
+                <%= link_to(t('logout'), destroy_user_session_path) %>        
+                </li>
+              <% else %>
+                <li>
+                <%= link_to(t('login.sign_in'), new_user_session_path)  %>  
+                </li>
+              <% end %>
+            </a>
+        </li>           
+    </ul>
+</nav>
+</div>

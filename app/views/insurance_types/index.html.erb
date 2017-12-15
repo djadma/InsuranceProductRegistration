@@ -1,0 +1,36 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= t('insurance_list_form') %></h2>    
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th><%= t('insurance_type') %></th>
+                <th><%= t('action') %>Action</th>
+                <th><%= t('form_preview') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @insurance_types.each do |insurance_type| %>
+                <tr>
+                  <td><%= insurance_type.name %></td>
+                  <td><%= link_to t('edit'), edit_insurance_type_path(insurance_type) %> | <%= link_to t('destroy'), insurance_type_path(insurance_type), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to t('preview'), new_insurance_type_product_path(insurance_type.id),target: '_blank' %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

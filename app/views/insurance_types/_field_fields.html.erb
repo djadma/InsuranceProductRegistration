@@ -1,0 +1,17 @@
+<fieldset>
+	<div class="form-group">
+		<div class="col-sm-3">
+	  	<%= f.select :field_type, options_for_select(%w[text_field check_box text_area radio_button email_field], f.object.field_type ), {}, class: "form-control" %>
+	  </div>
+	  <div class="col-sm-3">
+	  	<%= f.text_field :name, placeholder: "field name", class: 'form-control' %>
+	  </div>
+	  <div class="col-sm-2">
+	  	<%= f.check_box :required %> <%= f.label :required %>
+	  </div>
+	  <div class="col-sm-2">
+	  	<%= f.hidden_field :_destroy %>
+	  	<%= link_to t('remove'), '#', class: "remove_fields btn btn-danger" %>
+	  </div>
+	</div>
+</fieldset>

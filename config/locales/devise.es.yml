@@ -1,0 +1,9 @@
+es:
+  devise:
+    sessions:
+      signed_in: "Firmado con éxito."
+      signed_out: "Firmado con éxito."
+      already_signed_out: "Signed out successfully."
+    registrations:
+      signed_up: "¡Bienvenido! Usted se ha registrado exitosamente."
+      updated: "Su cuenta ha sido actualizada exitosamente."

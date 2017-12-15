@@ -1,0 +1,107 @@
+
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <%= form_for @business, :html => {class: 'form-horizontal'} do |f| %>
+                    <% if @business.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
+                          <ul>
+                          <% @business.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <%= t('company_name') %>
+                        </label>
+                        <div class="col-sm-10">
+                            <%= f.text_field :name, class: 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <%= t('rut') %>
+                        </label>
+                        <div class="col-sm-10">
+                            <%= f.text_field :rut, class: 'form-control' %>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><%= t('company_type') %></label>
+                        <div class="col-sm-10">
+                            <%= f.text_field :company_type, class: 'form-control' %>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><%= t('site') %></label>
+                        <div class="col-sm-10">
+                            <%= f.text_field :site, class: 'form-control' %>
+                        </div>
+                    </div>
+                    
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><%= t('logo') %></label>
+                        <div class="col-sm-10">
+
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                <div class="form-control" data-trigger="fileinput">
+                                    <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                    <span class="fileinput-filename"><%= f.object.logo.try(:file).try(:filename) %></span>
+                                </div>
+                                <span class="input-group-addon btn btn-default btn-file">
+                                    <span class="fileinput-new"><%= t('select_file') %></span>
+                                    <span class="fileinput-exists"><%= t('change_file') %></span>
+                                    <%= f.file_field :logo %>
+                                </span>
+                                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><%= t('remove') %></a>
+                            </div>
+                        <small class="help-block m-b-none"><%= t('logo_comment') %></small>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label"><%= t('products') %></label>
+                        <div class="col-sm-10">
+                            <% @products.each_with_index do |product| %>
+                                <% if product.name.present? %>
+                                    <%= f.label product.name %>
+                                    <% checked = f.object.product_IDs.include? product.id.to_s%>
+                                    <%= f.check_box(:product_IDs, {checked: checked, :multiple => true }, product.id, nil) %>
+                                <% end %>
+                            <% end if @products%>
+                            <%#= f.collection_select :product_IDs, Category.order(:name), :id, :name, {}, {multiple: true} %>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <%= f.text_field :emails, class: 'form-control'%>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <%= link_to t('cancel'), businesses_path, :class => "btn btn-white" %>
+                            <button class="btn btn-primary" type="submit"><%= t('save') %></button>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

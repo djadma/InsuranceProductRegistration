@@ -1,0 +1,18 @@
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+	<div>
+    <div>
+      <img src="/assets/logo.png">
+    </div>
+	<h2><%= t('forgot_password')%></h2>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= devise_error_messages! %>
+
+	  <div class="form-group">
+          <%= f.email_field :email, :class=>"form-control", :placeholder=>t('sign_up.email'), :required=>""  %>
+        </div>
+	  <%= f.submit t('reset_password'), :class=>"btn btn-primary block full-width m-b" %>
+	<% end %>
+
+	<%= render "users/shared/links" %>
+	</div>
+</div>

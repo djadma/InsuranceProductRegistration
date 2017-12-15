@@ -1,0 +1,106 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  sign_up:
+    new_account: "Create account to see it in action."
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    confirmation:  "Password confirmation"
+    terms: "Agree the terms and policy"
+    register: "Register"
+  login:
+    sign_in: "Login"
+    forgot: "Forgot password"
+    have_account: "Do not have an account?"
+    create_account: "Create an account"
+  welcome_to: "Welcome to"
+  admin_panel: "Admin Panel"
+  broker_panel: "Broker Panel"
+  logout: "Logout"
+  list_user: "List of User"
+  users: "Users"
+  first_name: "Names"
+  last_name: "Last Name"
+  username: "User Name"
+  usertype: "User Type"
+  email: "Email"
+  action: "Actions"
+  user_management: "User Management"
+  user_list: "User List"
+  new_user: "New User"
+  business_management: "Business Management"
+  business_list: "Company List"
+  new_business: "New Company"
+  reports: "Reports"
+  form_management: "Form Management"
+  form_list: "List of Forms"
+  new_form: "New Form"
+  create_user: "Create a New User"
+  role: "Role"
+  cancel: "Cancel"
+  save: "Save Changes"
+  admin: "Admin"
+  broker: "Broker"
+  confirm: "Password Confirm"
+  company_name: "Company Name"
+  rut: "RUT"
+  company_type: "Type of Company"
+  site: "Site"
+  logo: "Logo"
+  products: "Products"
+  list_of_business: "List of Companies"
+  business: "Business"
+  edit: "Edit"
+  destroy: "Destroy"
+  create_business: "Creating a New Business"
+  update_business: "Update the Business"
+  select_file: "Select file"
+  change_file: "Change"
+  remove: "Remove"
+  logo_comment: "Logo should be less than 500KB"
+  report_list: "Report Insurance Products"
+  report_options: "Report Options"
+  all: "All"
+  by_company: "By Company"
+  by_type: "By Type of Insurance Product"
+  filter: "Filter"
+  product_name: "Product Name"
+  download: "Download"
+  insurance_list_form: "List of Forms"
+  insurance_type: "Insurance Type"
+  form_preview: "Form Preview"
+  preview: "Preview"
+  create_insurance: "Creating a New Insurance Type"
+  insurance_title: "Insurance title"
+  add_field: "Add Fields"
+  required: "required"
+  remove: "remove"
+  edit_user: "Edit a User"
+  find_by_name: "Search"
+  delete_text: "Are you sure ?"
+  forgot_password: "Forgot your password"
+  reset_password: "Send me reset password instructions"
+  change_password_text: "Change your password"
+  new_password: "New Password"
+  password_confirmation: "Password Confirmation"
+  change_my_password: "Change my password"

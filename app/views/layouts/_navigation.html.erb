@@ -1,0 +1,46 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" src="<%= image_url 'logo_small.png' %>"/>
+                    </span>
+                </div>
+                <div class="logo-element">
+                    ES+
+                </div>
+            </li>
+            <% if current_user.is_admin? %>
+                <li class="<%= is_active_controller('users') %>">
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label" data-i18n="nav.user"><%= t('user_management') %></span></a>
+                    <ul class="nav nav-second-level collapse <%= is_active_controller('users', 'in') %>">
+                        <li class="<%= is_active_action('user_list') %>"><%= link_to t('user_list'), users_path %> </li>
+                        <li class="<%= is_active_action('new_user') %>"><%= link_to t('new_user'), new_user_path %> </li>                    
+                    </ul>
+                </li>
+            <% end %>
+            <li class="<%= is_active_controller('insurance_types') %>">
+              <a href="#"><i class="fa fa-industry"></i> <span class="nav-label" data-i18n="nav.user"><%= t('form_management') %></span></a>
+              <ul class="nav nav-second-level collapse <%= is_active_controller('forms', 'in') %>">
+                  <li class="<%= is_active_action('form_list') %>"><%= link_to t('form_list'), insurance_types_path %> </li>
+                  <li class="<%= is_active_action('new_form') %>"><%= link_to t('new_form'), new_insurance_type_path %> </li>                    
+              </ul>
+            </li>
+            <li class="<%= is_active_controller('businesses') %>">
+                <a href="#"><i class="fa fa-industry"></i> <span class="nav-label" data-i18n="nav.user"><%= t('business_management') %></span></a>
+                <ul class="nav nav-second-level collapse <%= is_active_controller('businesses', 'in') %>">
+                    <li class="<%= is_active_action('new_business') %>"><%= link_to t('new_business'), new_business_path %> </li> 
+                    <li class="<%= is_active_action('business_list') %>"><%= link_to t('business_list'), businesses_path %> </li>                   
+                </ul>
+            </li>
+
+            <li class="reports_link">
+                <%= link_to reports_index_path do %>
+                <i class="fa fa-file-text"></i> <span class="nav-label" data-i18n="nav.reports"><%= t('reports') %></span>
+                <% end %>
+            </li>
+        </ul>
+
+    </div>
+</nav>

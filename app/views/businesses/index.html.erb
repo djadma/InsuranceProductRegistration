@@ -1,0 +1,53 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+<div class="col-lg-10">
+    <h2><%= t('list_of_business') %></h2>    
+</div>
+<div class="col-lg-2">
+
+</div>
+    </div>
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+<div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5><%=  t('business')%></h5>
+        </div>
+        <div class="ibox-content">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th><%= t('company_name')%></th>
+                    <th><%= t('rut')%></th>
+                    <th><%= t('company_type')%></th>
+                    <th><%= t('site')%></th>
+                    <th><%= t('logo')%></th>
+                    <th><%= t('email')%></th>
+                    <th><%= t('products')%></th>
+                    <th><%= t('action')%></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% @businesses.each do |business| %>
+                        <tr>
+                          <td><%= business.name %></td>
+                          <td><%= business.rut %></td>
+                          <td><%= business.company_type %></td>
+                          <td><%= business.site %></td>
+                          <td><%= image_tag business.logo.try(:thumb).try(:url) %></td>
+                          <td><%= business.emails %></td>
+                          <td><%= get_product_names(business) %></td>
+                          <td><%= link_to t('edit'), edit_business_path(business) %>| <%= link_to t('destroy'), business_path(business), method: :delete %></td>
+                        </tr>
+                    <% end %>
+                
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</div>
+
+</div>

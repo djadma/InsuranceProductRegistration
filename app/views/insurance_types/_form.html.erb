@@ -1,0 +1,70 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= t('create_insurance') %></h2>    
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <%= form_for @insurance_type, :html => {class: 'form-horizontal'} do |f| %>
+            <% if @insurance_type.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@insurance_type.errors.count, "error") %> prohibited this insurance_type from being saved:</h2>
+
+                <ul>
+                <% @insurance_type.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">
+               <%= t('insurance_type') %>
+              </label>
+              <div class="col-sm-8">
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+            </div>
+
+            <div class="hr-line-dashed"></div> 
+
+            <div class="form-group">
+              <%= f.fields_for :fields do |builder| %>
+                <%= render 'field_fields', f: builder %>
+              <% end %>
+              <%= link_to_add_fields t('add_field'), f, :fields %>
+            </div>
+            <div class="hr-line-dashed"></div> 
+
+            <div class="form-group">
+              <div class="col-sm-4 col-sm-offset-2">
+                <button class="btn btn-white" type="submit"><%= t('cancel')%></button>
+                <%= f.submit t('save'), class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).on('click', 'form .remove_fields', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    return event.preventDefault();
+  });
+
+$(document).on('click', 'form .add_fields', function(event) {
+  var regexp, time;
+  time = new Date().getTime();
+  regexp = new RegExp($(this).data('id'), 'g');
+  $(this).before($(this).data('fields').replace(regexp, time));
+  return event.preventDefault();
+});
+</script>

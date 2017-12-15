@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Please fill the insurance product forms</h1>
+
+    <h2>Company Details</h2>
+
+    <ul>
+      <li><b>Name:</b> <%= @business.name %></li>
+      <li><b>Rut:</b> <%= @business.rut %></li>
+      <li><b>Email:</b> <%= @business.company_type %></li>
+      <% @products.each do |product| %>
+      	<li><b>Product Links:</b> <%= link_to @business.site + "/#{product.name}", new_insurance_type_product_url(product, business_id: @business.id) %></li>
+      <% end %>
+      
+    </ul>
+  </body>
+</html>
