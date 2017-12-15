@@ -2,7 +2,7 @@ class Business < ActiveRecord::Base
   serialize :product_IDs, Array
   #serialize :emails, Array
   belongs_to :user
-  has_one :product
+  has_one :product , :dependent => :destroy
   mount_uploader :logo, LogoUploader
 
   validates_processing_of :logo

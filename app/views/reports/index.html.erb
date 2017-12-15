@@ -55,11 +55,11 @@
                             <% @products.each do |product|%>
                                 <tr>
                                     <td><%= product.insurance_type.name%></td>
-                                    <td><%= product.business.name%></td>
-                                    <td><%= product.business.rut%></td>
-                                    <td><%= product.business.company_type%></td>
+                                    <td><%= product.try(:business).try(:name)%></td>
+                                    <td><%= product.try(:business).try(:rut)%></td>
+                                    <td><%= product.try(:business).try(:company_type)%></td>
                                 </tr>
-                            <% end %>
+                            <% end if @products.present? %>
                         </tbody>
                     </table>
 
