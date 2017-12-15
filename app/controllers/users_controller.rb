@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     before_filter :set_current_user
 
     def index
-        @users = User.all_except(current_user)
+        @users = User.all
     end
 
     def new

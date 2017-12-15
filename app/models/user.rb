@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :username, :password, :password_confirmation, :presence => true, :if => :is_super_user?
 
-  scope :all_except, ->(user) { where.not(id: user) }
   
   ROLES = { admin: 'Admin', broker: 'Broker' }
 
