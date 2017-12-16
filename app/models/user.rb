@@ -29,4 +29,16 @@ class User < ActiveRecord::Base
   def self.current=(user)
     Thread.current[:user] = user
   end
+
+  def self.search(params)
+    if params[:filter] == "first_name"
+      where("first_name = ? or last_name = ?", params[:search], params[:search])
+    elsif params[:filter] == "username"
+      where("username = ?", params[:search])
+    elsif params[:filter] == "role"
+      where("role = ?", params[:search].try(:capitalize))
+    else
+      all
+    end
+  end
 end

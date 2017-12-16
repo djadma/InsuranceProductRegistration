@@ -80,6 +80,7 @@ en:
   logo_comment: "Logo should be less than 500KB"
   report_list: "Report Insurance Products"
   report_options: "Report Options"
+  user_options: "User Options"
   all: "All"
   by_company: "By Company"
   by_type: "By Type of Insurance Product"

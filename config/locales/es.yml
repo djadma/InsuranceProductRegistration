@@ -59,6 +59,7 @@ es:
   logo_comment: "El logotipo debe ser inferior a 500 KB"
   report_list: "Informe sobre productos de seguros"
   report_options: "Opciones de informe"
+  user_options: "opciones de usuario"
   all: "Todas"
   by_company: "Por empresa"
   by_type: "Por tipo de producto de seguro"

@@ -42,26 +42,28 @@
                         </div>
                     <% end %>
                     <div class="hr-line-dashed"></div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th><%= t('product_name')%></th>
-                                <th><%= t('company_name')%></th>
-                                <th><%= t('rut')%></th>
-                                <th><%= t('company_type')%></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @products.each do |product|%>
+                    <div class="table-responsivenes">
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td><%= product.insurance_type.name%></td>
-                                    <td><%= product.try(:business).try(:name)%></td>
-                                    <td><%= product.try(:business).try(:rut)%></td>
-                                    <td><%= product.try(:business).try(:company_type)%></td>
+                                    <th><%= t('product_name')%></th>
+                                    <th><%= t('company_name')%></th>
+                                    <th><%= t('rut')%></th>
+                                    <th><%= t('company_type')%></th>
                                 </tr>
-                            <% end if @products.present? %>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <% @products.each do |product|%>
+                                    <tr>
+                                        <td><%= product.try(:insurance_type).try(:name)%></td>
+                                        <td><%= product.try(:business).try(:name)%></td>
+                                        <td><%= product.try(:business).try(:rut)%></td>
+                                        <td><%= product.try(:business).try(:company_type)%></td>
+                                    </tr>
+                                <% end if @products.present? %>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="hr-line-dashed"></div>
                     <%= link_to t('download'), reports_index_path(format: :xlsx, filter: params[:filter], search: params[:search]), class: "btn btn-primary" %>
