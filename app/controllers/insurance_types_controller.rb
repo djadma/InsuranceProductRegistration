@@ -1,11 +1,10 @@
 class InsuranceTypesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_insurance_type, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource  through: :current_account
 
   # GET /insurance_types
   # GET /insurance_types.json
   def index
-    @insurance_types = InsuranceType.all
   end
 
   # GET /insurance_types/new
@@ -20,6 +19,7 @@ class InsuranceTypesController < ApplicationController
   # POST /insurance_types
   # POST /insurance_types.json
   def create
+    params[:insurance_type][:account_id] = current_account.id
     @insurance_type = current_user.insurance_types.new(insurance_type_params)
 
     respond_to do |format|
@@ -65,6 +65,6 @@ class InsuranceTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def insurance_type_params
-      params.require(:insurance_type).permit(:name, :fields_attributes => [:id, :field_type, :name, :required, :_destroy])
+      params.require(:insurance_type).permit(:name, :account_id, :fields_attributes => [:id, :field_type, :name, :required, :_destroy])
     end
 end

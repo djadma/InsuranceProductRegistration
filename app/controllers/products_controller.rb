@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def new
     insurance_type = InsuranceType.find(params[:insurance_type_id])
+
     @product = insurance_type.products.new
   end
 
@@ -20,6 +21,7 @@ class ProductsController < ApplicationController
 
   def create
     insurance_type = InsuranceType.find(params[:insurance_type_id])
+    params[:product][:account_id] = insurance_type.account.id
     @product = insurance_type.products.new(product_params)
     if @product.save
       flash[:notice] = "Saved successfully"

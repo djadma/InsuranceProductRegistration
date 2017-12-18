@@ -41,6 +41,38 @@
 
                         <div class="hr-line-dashed"></div>
 
+                        <div class="form-group"><label class="col-sm-2 control-label"><%= t('mother_name')%></label>
+                            <div class="col-sm-10">
+                                <%= f.text_field :mother_lname, class: 'form-control',:placeholder=>t('mother_name') %>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label"><%= t('common')%></label>
+                            <div class="col-sm-10">
+                                <%= f.text_field :common, class: 'form-control',:placeholder=>t('common') %>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label"><%= t('region')%></label>
+                            <div class="col-sm-10">
+                                <%= f.text_field :region, class: 'form-control',:placeholder=>t('region') %>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label"><%= t('number')%></label>
+                            <div class="col-sm-10">
+                                <%= f.text_field :number, class: 'form-control',:placeholder=>t('number') %>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
                         <div class="form-group"><label class="col-sm-2 control-label"><%= t('role')%>*</label>
                             <div class="col-sm-10">
                                 <%#= f.select :role, options_for_select([['Admin'], ['Broker']], selected: @user.role, { :class => 'form-control' }) %>
@@ -77,7 +109,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <%= link_to t('cancel'), users_index_path, :class => "btn btn-white" %>
-                                <%= f.submit t('save'),:class=>"btn btn-primary" %>
+                                <%= f.submit @user.new_record? ? t('create_user') : t('update_user'),:class=>"btn btn-primary" %>
                             </div>
                         </div>
                     <% end %>

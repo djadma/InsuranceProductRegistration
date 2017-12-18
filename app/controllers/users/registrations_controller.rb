@@ -4,7 +4,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	def create
     params[:user][:role] = User::ROLES[:admin]
-    super
+    User.transaction do
+      super do |resource|
+        if resource.valid?
+          account = Account.create(user_id: resource.id)
+          resource.account_id = account.id
+          resource.save
+        end
+      end
+    end
   end
   
   protected

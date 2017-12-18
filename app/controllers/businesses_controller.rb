@@ -1,22 +1,18 @@
 class BusinessesController < ApplicationController
-    load_and_authorize_resource
-    before_action :set_business, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource  through: :current_account
     def new
         @business = current_user.businesses.new
-        @products = InsuranceType.all
+        @products = InsuranceType.joins(:user).where(users: { id: current_user.children.map(&:id).push(current_user.id) })
     end
 
     def index
-        if current_user.is_admin?
-            @businesses = Business.all
-        else
-            @businesses = current_user.businesses
-        end
+        
     end
 
     def create
+        params[:business][:account_id] = current_account.id
         @business = current_user.businesses.new(business_params)
-        @products = InsuranceType.all
+        @products = InsuranceType.joins(:user).where(users: { id: current_user.children.map(&:id).push(current_user.id) })
         respond_to do |format|
             if @business.save
                 format.html { redirect_to businesses_url }
@@ -29,7 +25,7 @@ class BusinessesController < ApplicationController
     end
 
     def edit
-        @products = InsuranceType.all
+        @products = InsuranceType.joins(:user).where(users: { id: current_user.children.map(&:id).push(current_user.id) })
     end
 
     def update
@@ -53,10 +49,6 @@ class BusinessesController < ApplicationController
   end
 
     private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_business
-        @business = Business.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params

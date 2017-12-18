@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-    load_and_authorize_resource
+    load_and_authorize_resource  through: :current_account
     before_filter :set_current_user
 
     def index
-        @users = User.search(params)
+        @users = @users.search(params)
     end
 
     def new
@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     end
 
     def register
+        params[:user][:parent_id] = current_user.id
+        params[:user][:account_id] = current_account.id
         @user = User.new(user_params)
         respond_to do |format|
             if @user.save
@@ -45,6 +47,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :role)
+        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :role, :mother_lname, :common, :region, :number, :parent_id, :account_id)
     end
 end

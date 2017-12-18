@@ -4,13 +4,21 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :insurance_types
-  has_many :businesses
+  has_many :businesses,:dependent => :destroy
+  has_many :products, through: :businesses
+
+  belongs_to :parent, :class_name => 'User'
+  belongs_to :account
+  has_many :children, :class_name => 'User', :foreign_key => 'parent_id',:dependent => :destroy
 
   validates :first_name, :last_name, :username, :password, :password_confirmation, :presence => true, :if => :is_super_user?
 
   
   ROLES = { admin: 'Admin', broker: 'Broker' }
 
+  def is_super_admin?
+    parent.blank?
+  end
   def is_admin?
     role == ROLES[:admin]
   end

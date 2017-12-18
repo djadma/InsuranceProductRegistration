@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   belongs_to :insurance_type
   belongs_to :business
+  belongs_to :account
   serialize :properties, Hash
   
   validate :validate_properties

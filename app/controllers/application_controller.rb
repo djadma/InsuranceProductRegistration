@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied!"  
-	redirect_to insurance_types_path 
+    if current_user.is_admin?
+	    redirect_to root_path 
+    else
+      redirect_to insurance_types_path 
+    end
   end
 
   def set_locale
@@ -21,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     User.current = current_user
+  end
+
+  def current_account
+    current_user.account if current_user.present?
   end
 end

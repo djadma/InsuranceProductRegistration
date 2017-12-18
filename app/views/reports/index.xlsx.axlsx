@@ -1,7 +1,7 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Report") do |sheet|
-	sheet.add_row ['Product Name','Company Name', 'RUT of the Company','Type of the Industry of the Company' ]
+	sheet.add_row ['Product Name','Company Name', 'RUT of the Company','Type of the Industry of the Company', 'Que => Ans' ]
 	  @products.each do |product|
-      sheet.add_row [product.insurance_type.name, product.business.name, product.business.rut, product.business.company_type]
+      sheet.add_row [product.insurance_type.name, product.business.name, product.business.rut, product.business.company_type, product.properties]
     end
 end
