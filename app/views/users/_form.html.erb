@@ -76,7 +76,8 @@
                         <div class="form-group"><label class="col-sm-2 control-label"><%= t('role')%>*</label>
                             <div class="col-sm-10">
                                 <%#= f.select :role, options_for_select([['Admin'], ['Broker']], selected: @user.role, { :class => 'form-control' }) %>
-                                <%= f.select(:role, [['Admin'], ['Broker']], {}, { :class => 'form-control', selected: @user.role }) %>
+
+                                <%= f.select(:role, [[t('admin'), 'Admin'], [t('broker'), 'Broker']], {}, { :class => 'form-control', selected: @user.role }) %>
                             </div>
                         </div>
 
