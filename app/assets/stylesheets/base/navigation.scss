@@ -33,7 +33,12 @@
 
 .navbar-default {
   background-color: transparent;
-  border-color: $nav-bg;
+  
+}
+
+.navbar-border {
+  border-right: 1px solid #18a689;
+    
 }
 
 .navbar-top-links li {
