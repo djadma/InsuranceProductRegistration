@@ -8,13 +8,11 @@
   color: #999c9e;
 }
 
-.nav > li.active > a {
-  color: #ffffff;
-}
+
 
 .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus {
   background-color: darken($nav-bg, 3%);
-  color: white;
+  
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -552,7 +550,7 @@ body.canvas-menu.mini-navbar .navbar-default .nav li .profile-element a span {
 
 body.canvas-menu nav.navbar-static-side {
   z-index: 2001;
-  background: powderblue;
+  background: #f3f3f4;
   height: 100%;
   position: fixed;
   display: none;
